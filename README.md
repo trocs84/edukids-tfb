@@ -98,5 +98,5 @@ La documentación completa del proyecto se encuentra en la carpeta `/docs`:
 
 
 
-**Fecha de inicio**: 22 de septiembre de 2026
+**Fecha de inicio**: 23 de septiembre de 2026
 **Última actualización**: 23 de septiembre de 2026
