@@ -1,0 +1,5 @@
+import type {Result,GameKind,Attempt} from './games';
+type StoredResponse={item_id:string;answer:number[];correct:boolean;hint_used:boolean;latency_ms:number;exposure_ms:number;attempt_no:number};
+type StoredSession={id:string;activity_id:GameKind;level:number;status:'active'|'completed'|'interrupted';created_at:string;responses:StoredResponse[]};
+export function toResults(rows:StoredSession[]):Result[]{return rows.filter(s=>s.status!=='active').map(s=>({id:s.id,game:s.activity_id,level:s.level,status:s.status as Result['status'],createdAt:s.created_at,attempts:s.responses.map(a=>({itemId:a.item_id,answer:a.answer,correct:a.correct,hintUsed:a.hint_used,latencyMs:a.latency_ms,exposureMs:a.exposure_ms,attemptNo:a.attempt_no}) as Attempt)}));}
+export async function request(path:string,body?:unknown){const response=await fetch(path,{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:undefined,body:body?JSON.stringify(body):undefined,cache:'no-store'});const data=await response.json();if(!response.ok)throw new Error(data.error??'No se ha podido completar la operación.');return data;}
