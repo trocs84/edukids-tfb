@@ -31,11 +31,11 @@ El proyecto se centra en aplicar principios de **Diseño Centrado en el Usuario 
 ## Estructuración del repositorio actual
 
 edukids-tfb/
-├── docs/          # Documentación del proyecto (entregables, investigación, etc.)
-├── prototipos/    # Wireframes, mockups, exportaciones de Figma
-├── diagramas/     # Diagramas UML, E-R, arquitectura, Gantt
-├── src/           # Código fuente del prototipo funcional (Next.js)
-└── README.md      # Este archivo
+ docs/          # Documentación del proyecto (entregables, investigación, etc.)
+ prototipos/    # Wireframes, mockups, exportaciones de Figma
+diagramas/     # Diagramas UML, E-R, arquitectura, Gantt
+ src/           # Código fuente del prototipo funcional (Next.js)
+ README.md      # Este archivo
 
 ## Tecnologías Utilizadas
 
