@@ -1,0 +1,746 @@
+[
+  {
+    "id": "WF01",
+    "title": "Bienvenida",
+    "note": "Entrada familiar autorizada. El acceso infantil va a selección de perfil; el área adulta requiere autenticación o revalidación. No exponer perfiles antes de autorizar el dispositivo.",
+    "reference": "Figma K01 · 6:2",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF01",
+        "label": "Volver"
+      },
+      {
+        "x": 50,
+        "y": 552,
+        "w": 230,
+        "h": 64,
+        "to": "WF02",
+        "label": "¡Vamos!"
+      },
+      {
+        "x": 295,
+        "y": 552,
+        "w": 375,
+        "h": 64,
+        "to": "WF10",
+        "label": "Soy una persona adulta"
+      }
+    ]
+  },
+  {
+    "id": "WF02",
+    "title": "Selección de perfil",
+    "note": "RF-04 / CU-03. Solo perfiles de la familia autorizada. Alias ficticios. Sin perfiles, la salida conduce al acceso adulto y a crear uno.",
+    "reference": "Figma K02 · 6:27",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF01",
+        "label": "Volver"
+      },
+      {
+        "x": 70,
+        "y": 210,
+        "w": 385,
+        "h": 250,
+        "to": "WF22",
+        "label": "★ Leo"
+      },
+      {
+        "x": 535,
+        "y": 210,
+        "w": 385,
+        "h": 250,
+        "to": "WF22",
+        "label": "● Noa"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 360,
+        "h": 64,
+        "to": "WF15",
+        "label": "No hay perfiles todavía"
+      }
+    ]
+  },
+  {
+    "id": "WF03",
+    "title": "Catálogo de juegos",
+    "note": "RF-01/02/12. Tres juegos del núcleo. El servidor filtra la habilitación por perfil y nivel. Examen del mago y Jardín del saber quedan fuera de esta primera implementación.",
+    "reference": "Figma K04 · 6:92",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF02",
+        "label": "Volver"
+      },
+      {
+        "x": 40,
+        "y": 190,
+        "w": 285,
+        "h": 270,
+        "to": "WF04",
+        "label": "7 + 2"
+      },
+      {
+        "x": 355,
+        "y": 190,
+        "w": 285,
+        "h": 270,
+        "to": "WF16",
+        "label": "2 → 10"
+      },
+      {
+        "x": 670,
+        "y": 190,
+        "w": 285,
+        "h": 270,
+        "to": "WF17",
+        "label": "2 · 4 · 1"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 275,
+        "h": 64,
+        "to": "WF09",
+        "label": "Mi camino"
+      }
+    ]
+  },
+  {
+    "id": "WF04",
+    "title": "Instrucciones de Atrapa el número",
+    "note": "CU-04A. Cinco ítems por sesión. Las instrucciones podrán escucharse en la aplicación; este wireframe no reproduce audio.",
+    "reference": "Figma K06 · 6:154",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF03",
+        "label": "Volver"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF05",
+        "label": "Empezar"
+      },
+      {
+        "x": 340,
+        "y": 552,
+        "w": 265,
+        "h": 64,
+        "to": "WF06",
+        "label": "Ver ayuda"
+      }
+    ]
+  },
+  {
+    "id": "WF05",
+    "title": "Ejercicio de respuesta directa",
+    "note": "CU-04A. Un toque envía la opción. Bloquear dobles envíos mientras llega el feedback; la corrección corresponde al motor, no al número de clics.",
+    "reference": "Figma K08 · 6:204",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF03",
+        "label": "Volver"
+      },
+      {
+        "x": 115,
+        "y": 315,
+        "w": 220,
+        "h": 64,
+        "to": "WF06",
+        "label": "6"
+      },
+      {
+        "x": 390,
+        "y": 315,
+        "w": 220,
+        "h": 64,
+        "to": "WF08",
+        "label": "8"
+      },
+      {
+        "x": 665,
+        "y": 315,
+        "w": 220,
+        "h": 64,
+        "to": "WF06",
+        "label": "9"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF06",
+        "label": "Dame una pista"
+      },
+      {
+        "x": 340,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF07",
+        "label": "Pausa"
+      }
+    ]
+  },
+  {
+    "id": "WF06",
+    "title": "Ayuda y reintento",
+    "note": "RF-03. Forma, texto y apoyo visual acompañan al color. Registrar primera respuesta, reintento y uso de pista por separado. Se vuelve al mismo ítem; no se declara acierto.",
+    "reference": "Diseño E2",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF03",
+        "label": "Volver"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 300,
+        "h": 64,
+        "to": "WF05",
+        "label": "Volver al reto"
+      }
+    ]
+  },
+  {
+    "id": "WF07",
+    "title": "Pausa y salida anticipada",
+    "note": "CU-04. Pausa local mientras está abierta la sesión; la recarga no promete reanudación en esta versión. Salir pide confirmación y conserva el estado interrumpido, no un resultado completado.",
+    "reference": "Diseño E2",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF03",
+        "label": "Volver"
+      },
+      {
+        "x": 215,
+        "y": 370,
+        "w": 270,
+        "h": 64,
+        "to": "WF05",
+        "label": "Seguir jugando"
+      },
+      {
+        "x": 510,
+        "y": 370,
+        "w": 270,
+        "h": 64,
+        "to": "WF03",
+        "label": "Terminar aquí"
+      }
+    ]
+  },
+  {
+    "id": "WF08",
+    "title": "Finalización guardada",
+    "note": "CU-04/05. Solo se muestra guardado tras confirmación del servidor. En el recorrido de wireframes se salta una ronda para ilustrar el estado final; los datos son ejemplos.",
+    "reference": "Diseño E2",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF03",
+        "label": "Volver"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 285,
+        "h": 64,
+        "to": "WF09",
+        "label": "Ver mi camino"
+      },
+      {
+        "x": 360,
+        "y": 552,
+        "w": 285,
+        "h": 64,
+        "to": "WF03",
+        "label": "Otro juego"
+      }
+    ]
+  },
+  {
+    "id": "WF09",
+    "title": "Progreso infantil",
+    "note": "CU-05. Mostrar sesiones finalizadas del perfil actual. No clasificar ni comparar con hermanos. El estado vacío es distinto de un fallo de carga.",
+    "reference": "Figma K21 · 6:529",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF03",
+        "label": "Volver"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 300,
+        "h": 64,
+        "to": "WF03",
+        "label": "Elegir otro juego"
+      }
+    ]
+  },
+  {
+    "id": "WF10",
+    "title": "Acceso de adulto",
+    "note": "CU-01. Formulario real en implementación: validación, error genérico, confirmación de correo si está habilitada y cierre de sesión. Ninguna contraseña queda en el historial de trabajo.",
+    "reference": "Figma F01 · 9:2",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF01",
+        "label": "Volver"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 290,
+        "h": 64,
+        "to": "WF11",
+        "label": "Entrar"
+      },
+      {
+        "x": 360,
+        "y": 552,
+        "w": 290,
+        "h": 64,
+        "to": "WF11",
+        "label": "Crear cuenta"
+      }
+    ]
+  },
+  {
+    "id": "WF11",
+    "title": "Panel familiar",
+    "note": "CU-06. Datos ilustrativos. Mostrar denominadores, ayudas y sesiones interrumpidas. Los gráficos describen la práctica registrada, no diagnostican aprendizaje.",
+    "reference": "Figma F04 · 9:77",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF01",
+        "label": "Volver"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 275,
+        "h": 64,
+        "to": "WF12",
+        "label": "Gestionar perfiles"
+      },
+      {
+        "x": 350,
+        "y": 552,
+        "w": 275,
+        "h": 64,
+        "to": "WF13",
+        "label": "Actividades y nivel"
+      }
+    ]
+  },
+  {
+    "id": "WF12",
+    "title": "Gestión de perfiles",
+    "note": "CU-02. Alias, avatar y franja; no nombre completo ni fecha de nacimiento. Al archivar se oculta del selector; el borrado definitivo exige un proceso distinto.",
+    "reference": "Figma F05 · 9:114",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF11",
+        "label": "Volver"
+      },
+      {
+        "x": 60,
+        "y": 190,
+        "w": 420,
+        "h": 230,
+        "to": "WF21",
+        "label": "★ Leo"
+      },
+      {
+        "x": 520,
+        "y": 190,
+        "w": 420,
+        "h": 230,
+        "to": "WF21",
+        "label": "● Noa"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 310,
+        "h": 64,
+        "to": "WF21",
+        "label": "Añadir un perfil"
+      }
+    ]
+  },
+  {
+    "id": "WF13",
+    "title": "Permisos y nivel",
+    "note": "CU-07. El adulto habilita juegos y fija un nivel 1–3. Los cambios se aplican al próximo inicio; una sesión ya iniciada conserva la versión y el nivel con que comenzó.",
+    "reference": "Figma F09 · 9:260",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF11",
+        "label": "Volver"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 300,
+        "h": 64,
+        "to": "WF11",
+        "label": "Guardar cambios"
+      }
+    ]
+  },
+  {
+    "id": "WF14",
+    "title": "Error de guardado",
+    "note": "RF-11. No mostrar éxito falso. Reintentar con el mismo identificador de sesión; una segunda petición no duplica resultados. El borrador vive en memoria: recargar puede perder lo pendiente.",
+    "reference": "Diseño E2",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF03",
+        "label": "Volver"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 300,
+        "h": 64,
+        "to": "WF08",
+        "label": "Reintentar guardado"
+      },
+      {
+        "x": 355,
+        "y": 552,
+        "w": 300,
+        "h": 64,
+        "to": "WF19",
+        "label": "Pedir ayuda adulta"
+      }
+    ]
+  },
+  {
+    "id": "WF15",
+    "title": "Estado vacío",
+    "note": "CU-02/03. Un perfil sin historial no debe parecer un fallo. Este ejemplo cubre la familia sin perfiles; el catálogo vacío debe ofrecer una salida a configuración adulta.",
+    "reference": "Diseño E2",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF01",
+        "label": "Volver"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 360,
+        "h": 64,
+        "to": "WF10",
+        "label": "Ir al área de familias"
+      }
+    ]
+  },
+  {
+    "id": "WF16",
+    "title": "Carrera de números",
+    "note": "CU-04B. Ejemplo de ruta desde 2 hasta 10: +3 y +5. Registrar cada elección; una ruta errónea ofrece reintento sin tratar velocidad como capacidad.",
+    "reference": "Figma K12 · 6:301",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF03",
+        "label": "Volver"
+      },
+      {
+        "x": 90,
+        "y": 350,
+        "w": 340,
+        "h": 64,
+        "to": "WF08",
+        "label": "Sumar 3"
+      },
+      {
+        "x": 500,
+        "y": 350,
+        "w": 340,
+        "h": 64,
+        "to": "WF06",
+        "label": "Sumar 9"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 275,
+        "h": 64,
+        "to": "WF07",
+        "label": "Pausa"
+      }
+    ]
+  },
+  {
+    "id": "WF17",
+    "title": "Memory Numbers exposición",
+    "note": "CU-04C. Secuencias como en el Figma. Exposición a ritmo del niño; registrar duración y no comparar capacidades entre personas a partir de este juego.",
+    "reference": "Figma K15 · 6:377",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF03",
+        "label": "Volver"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 320,
+        "h": 64,
+        "to": "WF18",
+        "label": "Ya los recuerdo"
+      },
+      {
+        "x": 390,
+        "y": 552,
+        "w": 250,
+        "h": 64,
+        "to": "WF07",
+        "label": "Pausa"
+      }
+    ]
+  },
+  {
+    "id": "WF18",
+    "title": "Memory Numbers respuesta",
+    "note": "CU-04C. Una vez ocultos, tocar la secuencia en el mismo orden. Deshacer el último toque se registra como edición; Volver a mirar marca ayuda y reinicia la respuesta.",
+    "reference": "Diseño E2",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF03",
+        "label": "Volver"
+      },
+      {
+        "x": 75,
+        "y": 310,
+        "w": 160,
+        "h": 64,
+        "to": "WF08",
+        "label": "1"
+      },
+      {
+        "x": 285,
+        "y": 310,
+        "w": 160,
+        "h": 64,
+        "to": "WF08",
+        "label": "2"
+      },
+      {
+        "x": 495,
+        "y": 310,
+        "w": 160,
+        "h": 64,
+        "to": "WF06",
+        "label": "3"
+      },
+      {
+        "x": 705,
+        "y": 310,
+        "w": 160,
+        "h": 64,
+        "to": "WF08",
+        "label": "4"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 300,
+        "h": 64,
+        "to": "WF17",
+        "label": "Volver a mirar"
+      },
+      {
+        "x": 365,
+        "y": 552,
+        "w": 300,
+        "h": 64,
+        "to": "WF18",
+        "label": "Deshacer"
+      }
+    ]
+  },
+  {
+    "id": "WF19",
+    "title": "Revalidación del área adulta",
+    "note": "CU-01/06/07. Una sesión familiar permite jugar, pero entrar a datos/configuración exige revalidar al adulto. El avatar no es una credencial ni una autorización.",
+    "reference": "Diseño E2",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF03",
+        "label": "Volver"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 310,
+        "h": 64,
+        "to": "WF11",
+        "label": "Continuar"
+      }
+    ]
+  },
+  {
+    "id": "WF20",
+    "title": "Sesión o acceso no disponible",
+    "note": "RF-09. Sesión caducada, perfil ajeno o actividad no habilitada: no filtrar información. Pedir al adulto que vuelva a entrar y conservar la distinción entre no guardado y guardado.",
+    "reference": "Diseño E2",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF01",
+        "label": "Volver"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 340,
+        "h": 64,
+        "to": "WF10",
+        "label": "Ir al acceso adulto"
+      }
+    ]
+  },
+  {
+    "id": "WF21",
+    "title": "Alta o edición de perfil",
+    "note": "CU-02. Formulario con alias de 1–24 caracteres, avatar de catálogo y franja 5 / 6–8 / 9. Confirmar el resultado y volver a la lista.",
+    "reference": "Diseño E2",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF12",
+        "label": "Volver"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 315,
+        "h": 64,
+        "to": "WF12",
+        "label": "Guardar perfil"
+      }
+    ]
+  },
+  {
+    "id": "WF22",
+    "title": "Preparación del entorno",
+    "note": "Aportación de la tutoría 05:22–06:10. Orientación breve, sin diagnóstico ni captura de postura. Se puede omitir. No condiciona el éxito de una tarea a obedecer una postura concreta.",
+    "reference": "Diseño E2",
+    "links": [
+      {
+        "x": 700,
+        "y": 552,
+        "w": 260,
+        "h": 64,
+        "to": "WF02",
+        "label": "Volver"
+      },
+      {
+        "x": 40,
+        "y": 552,
+        "w": 290,
+        "h": 64,
+        "to": "WF03",
+        "label": "Estoy listo"
+      },
+      {
+        "x": 360,
+        "y": 552,
+        "w": 290,
+        "h": 64,
+        "to": "WF03",
+        "label": "Ir a los juegos"
+      }
+    ]
+  }
+]
