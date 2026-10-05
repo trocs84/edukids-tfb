@@ -4,7 +4,7 @@ test('migraciones, RLS, permisos y finalización idempotente',async()=>{
  const a='11111111-1111-4111-8111-111111111111',b='22222222-2222-4222-8222-222222222222';
  await db.query("insert into auth.users(id,email,encrypted_password) values($1,'a@demo.test','x'),($2,'b@demo.test','x')",[a,b]);
  const own=async<T=Record<string,unknown>>(uid:string,sql:string,values:unknown[]=[])=>db.transaction(async tx=>{await tx.query("select set_config('request.jwt.claim.sub',$1,true)",[uid]);await tx.exec('set local role authenticated');return (await tx.query<T>(sql,values)).rows;});
- const [{id:pid}]=await own<{id:string}>(a,"insert into public.child_profiles(adult_id,alias,avatar,age_band) values($1,'Prueba','star','6-8') returning id",[a]);
+ const [{id:pid}]=await own<{id:string}>(a,"insert into public.child_profiles(adult_id,alias,avatar,age_band) values($1,'Prueba','star','7-8') returning id",[a]);
  assert.equal((await own(b,'select * from public.child_profiles')).length,0);
  await assert.rejects(()=>own(b,"insert into public.profile_activity values($1,'catch',true,1)",[pid]));
  await assert.rejects(()=>own(a,'update public.child_profiles set adult_id=$1 where id=$2',[b,pid]));

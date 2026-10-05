@@ -19,7 +19,7 @@ export async function POST(req:NextRequest){
  try{const user=await identity();if(!user)return response({error:'La sesión ha caducado.'},401);const b=await req.json();const gate=verifyGate((await cookies()).get('parent_gate')?.value,user.id);
  if(['profile','settings'].includes(b.action)&&!gate)return response({error:'Revalida tu acceso adulto.'},403);
  if(b.action==='profile'){
-  if(typeof b.alias!=='string'||b.alias.trim().length<1||b.alias.trim().length>24||!['star','circle','triangle'].includes(b.avatar)||!['5','6-8','9'].includes(b.ageBand))return response({error:'Revisa los datos del perfil.'},400);
+  if(typeof b.alias!=='string'||b.alias.trim().length<1||b.alias.trim().length>24||!['star','circle','triangle'].includes(b.avatar)||!['5-6','7-8','9-10'].includes(b.ageBand))return response({error:'Revisa los datos del perfil.'},400);
   const data=await saveProfile(user.id,{id:b.id,alias:b.alias.trim(),avatar:b.avatar,ageBand:b.ageBand});return response({ok:true,data});
  }
  if(b.action==='settings'){

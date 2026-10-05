@@ -54,3 +54,4 @@ coverage/
 *.zip
 *.tar.gz
 *.rar
+src/next-env.d.ts 
