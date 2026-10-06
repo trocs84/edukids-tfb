@@ -9,7 +9,7 @@
 
 ## Descripción del Proyecto
 
-**EduKids** es una plataforma educativa gamificada diseñada específicamente para niños de **5 a 9 años**.
+**EduKids** es una plataforma educativa gamificada diseñada específicamente para niños de **5 a 10 años**.
 
 El proyecto se centra en aplicar principios de **Diseño Centrado en el Usuario (DCU)** para crear una experiencia de aprendizaje:
 - **Accesible**: Interfaces adaptadas a los usuarios principiantes para un uso autónomo desde el inicio hasta la finalización de la sesión educativa
@@ -47,22 +47,22 @@ diagramas/     # Diagramas UML, E-R, arquitectura, Gantt
 - **draw.io / diagrams.net** — Diagramas UML y modelo Entidad-Relación
 
 ### Desarrollo (POC)
-- **Next.js 14** (React + TypeScript) — Framework fullstack
+- **Next.js 16** (React19 + TypeScript) — Framework fullstack
 - **Tailwind CSS** — Estilos utility-first
-- **Prisma** — ORM para base de datos
-- **PostgreSQL** — Base de datos relacional
+- **Supabase** — Backend y base de datos PostgreSQL en la nube
+- **PGlite** — PostgreSQL en memoria para desarrollo local
 
 ### Control de Versiones
 - **Git + GitHub** — Gestión de versiones y colaboración
 
 ---
 
-## 📅 Planificación del Proyecto
+##  Planificación del Proyecto
 
 | Fase | Fechas | Estado |
 |------|--------|--------|
 | **E1**: Propuesta inicial | Sep 2026 |  Completado |
-| **E2**: Diseño técnico y wireframes | Sep-Oct 2026 | En curso |
+| **E2**: Diseño técnico y wireframes | Sep-Oct 2026 | Cpompletado |
 | **Diseño en Figma** (alta fidelidad) | Oct-Nov 2026 |  Pendiente |
 | **Evaluación con participantes** | Nov-Dic 2026 |  Pendiente |
 | **E3**: Iteración basada en feedback | Ene 2027 |  Pendiente |
@@ -95,6 +95,8 @@ La documentación completa del proyecto se encuentra en la carpeta `/docs`:
 - Consentimientos parentales
 
 ---
+
+**Última actualización**: 5 de octubre de 2026
 
 
 
