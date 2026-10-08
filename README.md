@@ -62,7 +62,7 @@ diagramas/     # Diagramas UML, E-R, arquitectura, Gantt
 | Fase | Fechas | Estado |
 |------|--------|--------|
 | **E1**: Propuesta inicial | Sep 2026 |  Completado |
-| **E2**: Diseño técnico y wireframes | Sep-Oct 2026 | Cpompletado |
+| **E2**: Diseño técnico y wireframes | Sep-Oct 2026 | Completado |
 | **Diseño en Figma** (alta fidelidad) | Oct-Nov 2026 |  Pendiente |
 | **Evaluación con participantes** | Nov-Dic 2026 |  Pendiente |
 | **E3**: Iteración basada en feedback | Ene 2027 |  Pendiente |
