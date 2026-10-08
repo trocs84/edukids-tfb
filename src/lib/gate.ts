@@ -1,6 +1,7 @@
 import {createHmac,timingSafeEqual,randomBytes} from 'node:crypto';
 import {existsSync,mkdirSync,readFileSync,writeFileSync} from 'node:fs';
 import {join} from 'node:path';
-function secret(){if(process.env.PARENT_GATE_SECRET)return process.env.PARENT_GATE_SECRET;if(process.env.EDUKIDS_DATA_MODE==='supabase')throw new Error('PARENT_GATE_SECRET required');const dir=join(process.cwd(),'.data');mkdirSync(dir,{recursive:true});const file=join(dir,'gate.key');if(!existsSync(file))writeFileSync(file,randomBytes(32).toString('hex'),{mode:0o600,flag:'wx'});return readFileSync(file,'utf8');}
+import {dataDir} from './local-db';
+function secret(){if(process.env.PARENT_GATE_SECRET)return process.env.PARENT_GATE_SECRET;if(process.env.EDUKIDS_DATA_MODE==='supabase')throw new Error('PARENT_GATE_SECRET required');const dir=dataDir();mkdirSync(dir,{recursive:true});const file=join(dir,'gate.key');if(!existsSync(file))writeFileSync(file,randomBytes(32).toString('hex'),{mode:0o600,flag:'wx'});return readFileSync(file,'utf8');}
 export function signGate(userId:string,now=Date.now()) {const data=`${userId}.${now+5*60*1000}`;return `${data}.${createHmac('sha256',secret()).update(data).digest('hex')}`;}
 export function verifyGate(token:string|undefined,userId:string,now=Date.now()){if(!token)return false;const [id,expiry,mac]=token.split('.');if(id!==userId||!expiry||!mac||!Number.isFinite(Number(expiry))||Number(expiry)<now||Number(expiry)>now+5*60*1000)return false;const expected=createHmac('sha256',secret()).update(`${id}.${expiry}`).digest('hex');return mac.length===expected.length&&timingSafeEqual(Buffer.from(mac),Buffer.from(expected));}
