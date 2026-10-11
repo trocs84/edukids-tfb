@@ -76,8 +76,6 @@ diagramas/     # Diagramas UML, E-R, arquitectura, Gantt
 
 ##  Privacidad y Seguridad
 
-- ✅ Cumplimiento **RGPD** (Reglamento General de Protección de Datos)
-- ✅ Cumplimiento **LOPDGDD** (Ley Orgánica de Protección de Datos española)
 - ✅ Consentimiento parental obligatorio
 - ✅ Sin publicidad ni compras en la aplicación
 - ✅ Sin patrones oscuros para evitar frustraciones o enfados del usuario principal
@@ -101,4 +99,4 @@ La documentación completa del proyecto se encuentra en la carpeta `/docs`:
 
 
 **Fecha de inicio**: 23 de septiembre de 2026
-**Última actualización**: 5 de octubre de 2026
+**Última actualización**: 11 de octubre de 2026
