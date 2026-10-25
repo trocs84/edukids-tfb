@@ -2,7 +2,12 @@
 -- Fecha: 2026-10-04
 -- Autor: Antonio Rivera
 
--- Paso 1: Actualizar los valores existentes en la tabla
+-- Retirar primero la restricción anterior; de otro modo el UPDATE de perfiles
+-- existentes rechaza las franjas nuevas antes de poder instalar la nueva regla.
+ALTER TABLE public.child_profiles
+DROP CONSTRAINT IF EXISTS child_profiles_age_band_check;
+
+-- Actualizar los valores existentes en la tabla.
 UPDATE public.child_profiles 
 SET age_band = CASE 
   WHEN age_band = '5' THEN '5-6'
@@ -11,11 +16,7 @@ SET age_band = CASE
   ELSE age_band
 END;
 
--- Paso 2: Eliminar la restricción antigua
-ALTER TABLE public.child_profiles 
-DROP CONSTRAINT IF EXISTS child_profiles_age_band_check;
-
--- Paso 3: Añadir la restricción nueva
+-- Aplicar la nueva restricción una vez transformadas las filas.
 ALTER TABLE public.child_profiles 
 ADD CONSTRAINT child_profiles_age_band_check 
 CHECK (age_band IN ('5-6', '7-8', '9-10'));
