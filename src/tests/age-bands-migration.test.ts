@@ -21,7 +21,9 @@ test('la migración de franjas conserva perfiles creados antes de octubre',async
   await initialize(db);
   const rows=await db.query<{age_band:string}>("select age_band from public.child_profiles where alias='Perfil antiguo'");
   assert.equal(rows.rows[0]?.age_band,'7-8');
-  assert.equal((await db.query('select name from local_meta.migrations')).rows.length,4);
+  // Se cuentan los archivos de la carpeta para que una migración nueva no obligue a tocar esta cifra.
+  const total=(await readdir(dir)).filter(f=>f.endsWith('.sql')).length;
+  assert.equal((await db.query('select name from local_meta.migrations')).rows.length,total);
   await assert.rejects(()=>db.query("insert into public.child_profiles(adult_id,alias,avatar,age_band) values($1,'Franja vieja','star','6-8')",[user]));
  }finally{await db.close();}
 });
