@@ -4,6 +4,7 @@ import {NextRequest,NextResponse} from 'next/server';
 import {cookies} from 'next/headers';
 import {identity,isLocal,profiles,settings,sessions,saveProfile,saveSettings,rpc} from '@/lib/data';
 import {verifyGate} from '@/lib/gate';
+import {isSmileyValue} from '@/lib/smileyometer';
 export const dynamic='force-dynamic';
 const response=(data:unknown,status=200)=>NextResponse.json(data,{status,headers:{'Cache-Control':'private, no-store'}});
 export async function GET(req:NextRequest){try{
@@ -30,6 +31,10 @@ export async function POST(req:NextRequest){
  if(b.action==='start')data=await rpc(user.id,'start_play',{p_profile:b.profileId,p_activity:b.game});
  else if(b.action==='answer')data=await rpc(user.id,'record_answer',{p_session:b.sessionId,p_item:b.itemId,p_answer:b.answer,p_hint:b.hintUsed,p_latency:b.latencyMs,p_exposure:b.exposureMs,p_attempt:b.attemptNo});
  else if(b.action==='complete'||b.action==='interrupt')data=await rpc(user.id,'finish_play',{p_session:b.sessionId,p_status:b.action==='complete'?'completed':'interrupted'});
+ else if(b.action==='rate'){
+  if(!isSmileyValue(b.rating))return response({error:'Elige una de las cinco caras.'},400);
+  data=await rpc(user.id,'rate_play',{p_session:b.sessionId,p_rating:b.rating});
+ }
  else return response({error:'Acción no válida.'},400);
  return response({data});
  }catch{return response({error:'No se pudo completar la operación. Revisa la conexión y los permisos.'},400);}
