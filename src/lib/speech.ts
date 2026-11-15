@@ -1,12 +1,16 @@
 import type {Item} from './games';
-import {comfortSpeech} from './copy';
+import type {Chapter} from './book';
+import {comfortSpeech, bookSpeech, chapterEndSpeech, bookEndSpeech} from './copy';
 
 // Qué se lee en voz alta en cada pantalla. Son funciones puras para poder comprobarlas sin navegador
 // (tests/speech.test.ts). Studio.tsx solo se ocupa de pasarle el texto a la voz del dispositivo.
 
-export type View = 'profiles' | 'prepare' | 'catalog' | 'play' | 'result' | 'progress';
+export type View = 'profiles' | 'prepare' | 'book' | 'bookEnd' | 'catalog' | 'play' | 'result' | 'progress';
 export type Feedback = '' | 'correct' | 'retry' | 'explain';
 export type PlayState = {item: Item; answer: number[]; hint: boolean; feedback: Feedback; showSequence: boolean};
+// Lo que hace falta saber del libro para leer la portada, el final de un capítulo o el final del libro.
+// chapterNumber es el número del capítulo que se acaba de jugar (0 si no se jugó dentro del libro).
+export type BookContext = {chapters: readonly Chapter[]; button: string | null; alias?: string; inBook: boolean; chapterNumber: number; last: boolean};
 
 const list = (numbers: number[]) => (numbers.length < 2 ? numbers.join('') : `${numbers.slice(0, -1).join(', ')} o ${numbers[numbers.length - 1]}`);
 // Las voces no leen igual los símbolos: "4 + 3" se lee "4 más 3".
@@ -37,13 +41,17 @@ export function playSpeech({item, answer, hint, feedback, showSequence}: PlaySta
  return parts.join(' ');
 }
 
-export function speechFor(view: View, play?: PlayState): string {
+export function speechFor(view: View, play?: PlayState, book?: BookContext): string {
  switch (view) {
   case 'profiles': return '¿Quién va a jugar? Toca tu dibujo para entrar.';
   case 'prepare': return comfortSpeech();
+  case 'book': return book ? bookSpeech(book.chapters, book.button) : '';
+  case 'bookEnd': return book ? bookEndSpeech(book.alias, book.chapters.length) : '';
   case 'catalog': return 'Elige tu aventura. Toca un juego para empezar. Puedes pedir ayuda o descansar cuando quieras.';
   case 'play': return play ? playSpeech(play) : '';
-  case 'result': return 'Has terminado tu actividad. Puedes seguir aprendiendo o descansar. ¿Cómo te lo has pasado? Toca una cara.';
+  case 'result':
+   if (book?.inBook && book.chapterNumber > 0) return chapterEndSpeech(book.chapterNumber, book.last);
+   return 'Has terminado tu actividad. Puedes seguir aprendiendo o descansar. ¿Cómo te lo has pasado? Toca una cara.';
   case 'progress': return 'Mi camino. Aquí ves las actividades que has hecho. Toca el botón grande para elegir otro juego.';
  }
 }

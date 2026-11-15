@@ -9,3 +9,19 @@
 @media(max-width:800px){.comfort{padding:18px;gap:20px}.tips{font-size:21px;gap:14px}.listen,.cta{width:100%}}
 @media(max-width:560px){.comfort{grid-template-columns:1fr}.sit{max-width:380px;margin:0 auto}}
 @media(max-width:480px){.answers button,.sequence span{min-width:88px;min-height:96px;font-size:34px}.eyebrow{margin-top:22px;letter-spacing:.5px}h1{margin:16px 0 14px}.exercise{margin-top:14px}.answers,.sequence{margin:18px 0}.feedback{min-height:0;margin:10px 0}.actions{margin:18px 0}.listen{margin:2px 0 14px}}
+/* Libro de hoy (sesión 7). La escena de Nubi tiene proporción 3:2; los números de los capítulos van sobre sus tres piedras (posiciones en %). */
+.book{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:28px;padding:24px;margin:24px 0}
+.book-scene{position:relative;aspect-ratio:3/2;width:100%;max-width:640px;margin:0 auto;border-radius:20px;overflow:hidden;background:var(--paper);container-type:inline-size}.book-scene img{object-fit:cover}
+.stone{position:absolute;transform:translate(-50%,-50%);width:36px;width:clamp(30px,8.5cqw,56px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:18px;font-size:clamp(16px,4.4cqw,28px);border:2px solid var(--ink);background:#fff;color:var(--ink)}
+.stone.done{background:var(--ink);color:#fff}.stone.next{box-shadow:0 0 0 6px #ab5a18}.stone.later{background:#ffffffd9;border-style:dashed}
+.stone-1{left:30%;top:72%}.stone-2{left:40.5%;top:78%}.stone-3{left:53.5%;top:85.5%}
+.chapters{list-style:none;margin:0;padding:0;display:grid;gap:12px}.chapters li{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--line);border-radius:18px;background:var(--paper);font-size:21px;line-height:1.3}.chapter-text{display:grid;gap:2px}.chapter-text b{font-size:15px;letter-spacing:.3px;color:var(--muted)}
+.chapters li.done{background:var(--mint)}.chapters li.next{border:3px solid var(--ink);background:#fff}.chapter-status{margin-left:auto;font-size:15px;font-weight:700;color:var(--muted);text-align:right}
+@media(max-width:900px){.book{grid-template-columns:1fr;padding:16px;gap:18px}}
+@media(max-width:700px){.chapters li{font-size:19px;padding:12px 14px}}
+@media(max-width:480px){.chapters li{grid-template-columns:auto 1fr}.chapter-status{grid-column:2;margin-left:0;text-align:left}}
+/* Antes de empezar: Nubi sentado (imagen cuadrada) con los números 1, 2 y 3 de las indicaciones encima: espalda, pies y pantalla. */
+.sit-photo{position:relative;width:100%;max-width:440px;aspect-ratio:1;margin:0 auto;border-radius:24px;overflow:hidden}.sit-photo img{display:block;width:100%;height:100%}
+.pin{position:absolute;transform:translate(-50%,-50%);width:clamp(30px,8vw,44px);aspect-ratio:1;border-radius:50%;background:var(--ink);color:#fff;border:3px solid #fff;display:grid;place-items:center;font-weight:800;font-size:clamp(16px,4vw,22px)}
+.pin-1{left:17%;top:47%}.pin-2{left:47%;top:87%}.pin-3{left:72%;top:28%}
+@media(max-width:560px){.sit-photo{max-width:380px}}
