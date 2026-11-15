@@ -3,6 +3,7 @@ import {cookies} from 'next/headers';
 import {authenticate,identity,logout} from '@/lib/data';
 import {signGate} from '@/lib/gate';
 import {sameOrigin} from '@/lib/origin';
+import {tooManyAttempts,badCredentials} from '@/lib/login-attempts';
 export const dynamic='force-dynamic';
 const fail=(error:string,status=400)=>NextResponse.json({error},{status,headers:{'Cache-Control':'no-store'}});
 export async function POST(req:NextRequest){
@@ -15,5 +16,9 @@ export async function POST(req:NextRequest){
  const {user,needsConfirmation}=await authenticate(action,email,password);
  if(user)jar.set('parent_gate',signGate(user.id),{httpOnly:true,sameSite:'strict',secure:process.env.NODE_ENV==='production',path:'/',maxAge:300});
  return NextResponse.json({ok:true,needsConfirmation},{headers:{'Cache-Control':'no-store'}});
- }catch{return fail('No se ha podido validar el acceso. Revisa los datos o espera cinco minutos antes de reintentar.',401);}
+ }catch(e){const m=(e as Error)?.message;
+ // En modo local se distingue el bloqueo de una contraseña equivocada; en la nube el error lo decide Supabase.
+ if(m===tooManyAttempts)return fail('Demasiados intentos. Espera cinco minutos antes de volver a probar.',429);
+ if(m===badCredentials)return fail('No se ha podido validar el acceso. Revisa el correo y la contraseña.',401);
+ return fail('No se ha podido validar el acceso. Revisa los datos o espera cinco minutos antes de reintentar.',401);}
 }
