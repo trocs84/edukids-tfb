@@ -1,102 +1,96 @@
-# EduKids — Plataforma Educativa Gamificada
+# EduKids
 
-> **Trabajo de Fin de Batxelor — Grado en Informática**
-> Universidad Carlemany
-> **Estudiante**: Antonio Rivera
-> **Línea de investigación**: Diseño UX/UI e Interacción Niño-Aplicación
+Trabajo de Fin de Batxelor (Batxelor en Informática, Universitat Carlemany). Estudiante: Antonio Rivera Mérida. Tutor: Francesc Albuera Reverte.
+Línea temática: experiencia de usuario y diseño centrado en el usuario.
 
----
+EduKids es una aplicación web de matemáticas básicas para niños de 5 a 10 años, pensada para usarse con un dispositivo compartido y con un adulto que configura y revisa. El proyecto estudia cómo diseñar una interfaz que un niño pueda usar con autonomía, sin monedas, rankings ni recompensas, y que dé al adulto indicadores descriptivos de lo que ha pasado en cada sesión.
 
-## Descripción del Proyecto
+Demo en producción: https://edukids-blond.vercel.app (la ruta `/demo` no guarda datos).
 
-**EduKids** es una plataforma educativa gamificada diseñada específicamente para niños de **5 a 10 años**.
+## Estado a 16/11/2026
 
-El proyecto se centra en aplicar principios de **Diseño Centrado en el Usuario (DCU)** para crear una experiencia de aprendizaje:
-- **Accesible**: Interfaces adaptadas a los usuarios principiantes para un uso autónomo desde el inicio hasta la finalización de la sesión educativa
-- **Motivadora**: mecánica de juego sin patrones oscuros y con un nivel de simplicidad adaptado a las necesidades a los que van destinado el producto final
-- **Segura**: Cumplimiento RGPD para menores
-- **Efectiva**: Evaluación con participantes reales (3 usuarios de 5, 7 y 9 años)
+* Tres juegos con tres niveles cada uno: Atrapa el número, Carrera de números y Memory Numbers. Cinco retos fijos por actividad, comprobados en el servidor.
+* Zona infantil con perfiles por alias, pantalla "Antes de empezar" con consejos de comodidad, botón de escucha en cada pantalla y valoración con cinco caras al terminar (Smileyometer).
+* Zona de familias con acceso adulto, perfiles, configuración de juegos y nivel por perfil, y un panel básico: sesiones terminadas, primeras respuestas correctas sin pista, intentos con ayuda e interrupciones.
+* Base de datos PostgreSQL con permisos por fila y funciones que validan las respuestas. En local se usa PGlite; en la nube, Supabase.
+* Pruebas automáticas con `node:test` en `src/tests`.
 
----
+## Qué no está hecho todavía
 
-## Objetivos del Proyecto
+* Panel con indicadores completo (en curso).
+* Revisión de seguridad de la base de datos antes de que ningún niño juegue fuera de mi entorno (permisos de las funciones antiguas, políticas de acceso y validación de la API).
+* Evaluación con familias: preparada, sin datos de participantes todavía.
+* Pruebas en tableta real a fondo y en horizontal.
+* Integración continua: las pruebas se ejecutan en local, no en GitHub.
 
-1. Diseñar una interfaz adaptada a las capacidades cognitivas y motrices de niños en edad escolar
-2. Desarrollar un sistema de juego motivador pero no adictivo sin desarrollar sistemas de recompensa banales
-3. Implementar un panel parental para seguimiento sin conocimientos técnicos con una visualización del aprendizaje del usuario
-4. Validar el diseño mediante evaluaciones con usuarios reales
-5. Crear un prototipo funcional (POC) en Next.js
+## Cómo ejecutarlo
 
+Requisitos: Node.js reciente (probado con la versión 24).
 
-## Estructuración del repositorio actual
+```bash
+cd src
+npm ci
+npm test
+npm run dev
+```
 
-edukids-tfb/
- docs/          # Documentación del proyecto (entregables, investigación, etc.)
- prototipos/    # Wireframes, mockups, exportaciones de Figma
-diagramas/     # Diagramas UML, E-R, arquitectura, Gantt
- src/           # Código fuente del prototipo funcional (Next.js)
- README.md      # Este archivo
+La aplicación queda en http://127.0.0.1:3000. Sin variables de entorno funciona en modo local, con una base de datos PGlite en `src/.data` (no se sube a Git). Para usar Supabase hace falta rellenar las variables de `src/.env.example`; las claves reales no se suben nunca.
 
-## Tecnologías Utilizadas
+Otros comandos: `npm run typecheck` y `npm run build`.
 
-### Diseño y Prototipado
-- **Figma** — Wireframes, mockups de alta fidelidad y prototipo interactivo
-- **FigJam** — Brainstorming y mapas conceptuales
+## Tecnologías y licencias
 
-### Diagramas
-- **draw.io / diagrams.net** — Diagramas UML y modelo Entidad-Relación
+| Tecnología | Uso | Licencia |
+|------------|-----|----------|
+| Next.js 16.3.6 | Framework web | MIT |
+| React 19.3.0 | Interfaz | MIT |
+| TypeScript 7.0.2 | Lenguaje (desarrollo) | Apache-2.0 |
+| @electric-sql/pglite 0.5.8 | PostgreSQL embebido en modo local | Apache-2.0 |
+| @supabase/supabase-js 2.117.2 y @supabase/ssr 0.12.7 | Cliente de Supabase | MIT |
+| tsx 4.23.15 | Ejecución de pruebas (desarrollo) | MIT |
+| Supabase (servicio, plan gratuito) | Base de datos PostgreSQL, autenticación y permisos por fila en la nube | Servicio comercial con plan gratuito |
+| Vercel (servicio, plan Hobby) | Alojamiento y despliegue | Servicio comercial con plan gratuito |
+| GitHub | Control de versiones | Servicio comercial |
 
-### Desarrollo (POC)
-- **Next.js 16** (React19 + TypeScript) — Framework fullstack
-- **Tailwind CSS** — Estilos utility-first
-- **Supabase** — Backend y base de datos PostgreSQL en la nube
-- **PGlite** — PostgreSQL en memoria para desarrollo local
+Las licencias de las bibliotecas son las que declara cada paquete (lectura del 16/11/2026). Licencia de este proyecto: pendiente de decidir.
 
-### Control de Versiones
-- **Git + GitHub** — Gestión de versiones y colaboración
+## Estructura
 
----
+```
+docs/          Entregables y fichas de avance por sesión (docs/avances)
+diagramas/     Diagramas de arquitectura y UML
+prototipos/    Wireframes
+src/           Aplicación (Next.js, React, TypeScript)
+  app/         Rutas y API
+  components/  Pantallas
+  lib/         Lógica (juegos, datos, voz, niveles)
+  supabase/    Migraciones SQL
+  tests/       Pruebas
+```
 
-##  Planificación del Proyecto
+## Cómo se trabaja
+
+Una rama por sesión de trabajo, una pull request con la descripción de lo probado y lo no probado, fusión con "Rebase and merge", despliegue automático en Vercel (producción desde `main`, vista previa por PR), prueba en producción y una ficha en `docs/avances`. Los cambios en la base de datos van en migraciones SQL con marcha atrás guardada fuera del repositorio.
+
+## Uso de inteligencia artificial
+
+El código, las pruebas y parte de los textos los genera una IA (Claude Code, de Anthropic) a partir de mis indicaciones. Yo decido qué entra, ejecuto los comandos y las pruebas, compruebo el resultado y abro y fusiono las pull requests. Cada ficha de `docs/avances` indica qué hizo la IA y qué hice yo. La mascota Nubi y sus variantes están generadas con IA a partir de prompts míos.
+
+## Privacidad y ética
+
+* El repositorio no contiene datos de menores ni claves. La nube solo tiene datos de prueba.
+* La participación de familias se hará con información previa y consentimiento por escrito, con alias y sin datos identificativos. El documento de información y consentimiento está en preparación y pendiente de revisión con el tutor.
+* Los indicadores del panel describen lo que ocurre en el juego. No son una evaluación de capacidades ni sirven para comparar niños.
+* No hay publicidad, compras, monedas ni rankings.
+
+## Planificación
 
 | Fase | Fechas | Estado |
 |------|--------|--------|
-| **E1**: Propuesta inicial | Sep 2026 |  Completado |
-| **E2**: Diseño técnico y wireframes | Sep-Oct 2026 | Completado |
-| **Diseño en Figma** (alta fidelidad) | Oct-Nov 2026 |  Pendiente |
-| **Evaluación con participantes** | Nov-Dic 2026 |  Pendiente |
-| **E3**: Iteración basada en feedback | Ene 2027 |  Pendiente |
-| **POC Next.js** | Ene-Feb 2027 |  Pendiente |
-| **Entrega final** | Feb 2027 | Pendiente |
-| **Defensa** | Mar 2027 |  Pendiente |
+| E1: propuesta inicial | hasta el 02/08/2026 | Entregado |
+| E2: marco teórico y metodología | hasta el 11/10/2026 | Entregado |
+| E3: entrega completa | 11/01 – 17/01/2027 | En curso |
+| E4: depósito final | 08/02 – 14/02/2027 | Pendiente |
+| Defensa | 08/03 – 21/03/2027 | Pendiente |
 
-
----
-
-
-##  Privacidad y Seguridad
-
-- ✅ Consentimiento parental obligatorio
-- ✅ Sin publicidad ni compras en la aplicación
-- ✅ Sin patrones oscuros para evitar frustraciones o enfados del usuario principal
-- ✅ Separación total de interfaces niño/adulto
-
----
-
-## Documentación
-
-La documentación completa del proyecto se encuentra en la carpeta `/docs`:
-- Entregable 1: Propuesta inicial
-- Entregable 2: Diseño técnico y wireframes
-- Entregable 3: Evaluación e iteración
-- Bibliografía y referencias
-- Consentimientos parentales
-
----
-
-
-
-
-
-**Fecha de inicio**: 23 de septiembre de 2026
-**Última actualización**: 11 de octubre de 2026
+Última actualización: 16 de noviembre de 2026.
