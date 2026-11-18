@@ -74,7 +74,7 @@ Una rama por sesión de trabajo, una pull request con la descripción de lo prob
 
 ## Uso de inteligencia artificial
 
-El código, las pruebas y parte de los textos los genera una IA (Claude Code, de Anthropic) a partir de mis indicaciones. Yo decido qué entra, ejecuto los comandos y las pruebas, compruebo el resultado y abro y fusiono las pull requests. Cada ficha de `docs/avances` indica qué hizo la IA y qué hice yo. La mascota Nubi y sus variantes están generadas con IA a partir de prompts míos.
+El código, las pruebas los genera una IA (Claude Code, de Anthropic) a partir de mis indicaciones. Yo decido qué entra, ejecuto los comandos y las pruebas, compruebo el resultado y abro y fusiono las pull requests. Cada ficha de `docs/avances` indica qué hizo la IA y qué hice yo. La mascota Nubi y sus variantes están generadas con IA a partir de prompts míos.
 
 ## Privacidad y ética
 
